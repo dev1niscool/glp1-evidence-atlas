@@ -148,7 +148,13 @@ h1 { font-size: clamp(48px, 7vw, 78px); line-height: 1; }
 .organ-atlas { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
 .section-label { padding: 26px 0; }
 .section-label h3, .research-heading h3 { font: 400 31px/1.1 Georgia, serif; letter-spacing: -.025em; }
-.section-label > p:last-child { max-width: 620px; margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.section-label h3 + p { max-width: 620px; margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.signal-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; color: var(--muted); font-size: 9px; font-weight: 700; }
+.signal-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.signal-legend i { width: 9px; height: 9px; border: 1px solid var(--line); border-radius: 50%; }
+.benefit-dot { background: var(--green); }
+.caution-dot { background: var(--coral); }
+.mixed-dot { background: var(--gold); }
 .organ-tabs { display: flex; gap: 6px; padding: 0 0 16px; overflow-x: auto; border-bottom: 1px solid var(--ink); }
 .organ-tabs button { flex: none; padding: 10px 12px; border: 1px solid var(--line); background: transparent; cursor: pointer; font: 800 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
 .organ-tabs button.active { border-color: var(--ink); background: var(--ink); color: #fff; }
@@ -167,9 +173,9 @@ h1 { font-size: clamp(48px, 7vw, 78px); line-height: 1; }
 .mechanism-card dd { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
 .mechanism-card .study-reading { color: var(--ink); }
 .mechanism-card > a { display: inline-block; margin-top: 18px; font-size: 10px; font-weight: 800; }
-.mechanism-card.warning { background: var(--coral); border-color: #c78a78; }
+.mechanism-card.caution { background: var(--coral); border-color: #c78a78; }
 .mechanism-card.mixed { background: var(--gold); border-color: #d5bb72; }
-.mechanism-card.direct { background: var(--green); border-color: #8eb8a0; }
+.mechanism-card.benefit { background: var(--green); border-color: #8eb8a0; }
 
 .research-detail { padding-top: 70px; }
 .research-heading { margin-bottom: 28px; }
