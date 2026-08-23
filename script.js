@@ -722,7 +722,7 @@ Object.assign(organEvidence.retatrutide, {
     studies: [
       organStudy("GLP-1R + GIPR + GCGR", "Matched agonist pharmacology", "direct", "GCGR activity added weight loss beyond dual incretin agonism", "Diet-induced obese mice treated with retatrutide and comparator co-agonists spanning different receptor balances.", "Repeated dosing with indirect calorimetry and body-composition measurement.", "Retatrutide produced greater weight loss than the tested dual-agonist comparators; GCGR engagement contributed an energy-expenditure component in the discovery experiments.", "Hepatic oxidation and endocrine signals such as FGF21 are candidate links from GCGR to whole-body energy use.", "Later models did not always reproduce sustained expenditure elevation, so the result should not be described as a universal thermogenic effect.", "Coskun et al. · Cell Metabolism 2022", "https://doi.org/10.1016/j.cmet.2022.07.013"),
       organStudy("GCGR", "BAT-specific knockout", "mixed", "Brown-fat GCGR was not required for glucagon's whole-body energy effect", "Wild-type, Ucp1−/−, and brown-adipocyte Gcgr knockout mice plus brown-fat explants.", "Acute glucagon under different genetic conditions.", "Glucagon increased oxygen consumption in vivo and in explants, including without UCP1; BAT-specific Gcgr deletion did not abolish the whole-body phenotype.", "FGF21 and non-UCP1 pathways contributed, with important signaling outside brown adipocytes.", "GCGR can raise energy expenditure, but direct BAT GCGR is not the sole route. This prevents an oversimplified 'retatrutide activates brown fat' claim.", "Beaudry et al. · Diabetes 2019", "https://pubmed.ncbi.nlm.nih.gov/30772257/"),
-      organStudy("GLP-1R + GIPR + GCGR", "MASH model energetics", "warning", "A later retatrutide model found intake suppression without sustained higher expenditure", "Diet-induced obese/MASH mice studied longitudinally.", "Repeated retatrutide with food-intake, energy-expenditure, and body-composition measurements.", "Food intake fell early and body weight fell about 31%, from both fat and lean compartments; a significant sustained rise in energy expenditure was not observed in that design.", "Negative energy balance was dominated by reduced intake at the measured times.", "This does not invalidate the discovery study; it shows that dose, disease state, acclimation, and timing can change the observed energy mechanism.", "Briand et al. · Obesity 2026", "https://doi.org/10.1002/oby.70155")
+      organStudy("GLP-1R + GIPR + GCGR", "MASH model energetics", "warning", "Retatrutide reduced both fat and lean mass without sustained higher expenditure", "Diet-induced obese/MASH mice studied longitudinally.", "Repeated retatrutide with food-intake, energy-expenditure, and body-composition measurements.", "Food intake fell early and body weight fell about 31%, from both fat and lean compartments; a significant sustained rise in energy expenditure was not observed in that design.", "Negative energy balance was dominated by reduced intake at the measured times.", "This does not invalidate the discovery study; it shows that dose, disease state, acclimation, and timing can change the observed energy mechanism.", "Briand et al. · Obesity 2026", "https://doi.org/10.1002/oby.70155")
     ]
   },
   immune: {
@@ -733,6 +733,52 @@ Object.assign(organEvidence.retatrutide, {
       organStudy("GLP-1R + GIPR + GCGR", "Direct multi-organ disease models", "direct", "Retatrutide reduced inflammatory and fibrotic signals alongside metabolic improvement", "Db/db kidney disease and diet-induced MASH models.", "Repeated retatrutide with tissue histology and inflammatory/fibrotic marker panels.", "Renal and hepatic inflammatory injury markers fell in the tested models, accompanying lower weight, altered metabolites, and less ectopic lipid.", "Reduced lipotoxicity plus receptor-specific neural, stromal, endothelial, and GCGR metabolic pathways may all contribute.", "Without immune-cell-specific receptor deletion, these are integrated organ outcomes—not proof of direct action on macrophages or lymphocytes.", "Ma et al. · Endocrine 2025", "https://pubmed.ncbi.nlm.nih.gov/39212900/")
     ]
   }
+});
+
+// Card color describes the direction of the finding for receptor activation or
+// drug exposure—not whether the experiment itself used an agonist or knockout.
+const signalAudit = {
+  caution: new Set([
+    "Ussher: deleting cardiomyocyte GIPR protected the ischemic heart",
+    "Glucagon worsened ischemic injury; cardiomyocyte GCGR deletion protected",
+    "Retatrutide accelerated mouse atrial rate through GCGR–cAMP–PKA signaling",
+    "GIPR loss protected only selected cardiac injury models",
+    "Retatrutide reduced both fat and lean mass without sustained higher expenditure"
+  ]),
+  mixed: new Set([
+    "Metabolic efficacy did not translate into Alzheimer-model improvement",
+    "Vagal GLP-1 receptors helped restrain gastric emptying",
+    "GLP-1R mediated slow gastric emptying, but the incretin axis compensated",
+    "Renal GLP-1R localized mainly to vascular smooth muscle",
+    "Four weeks of semaglutide or tirzepatide did not measurably change bone",
+    "GLP-1R loss altered regulatory T-cell abundance",
+    "GIP agonists and antagonists acted through different brain regions",
+    "GIPR loss impaired oral incretin action but triggered beta-cell adaptation",
+    "The GLP-1 component can slow gastric emptying through vagal afferents",
+    "Direct tirzepatide bone findings were not consistent across mouse experiments",
+    "Brown-fat GIPR mattered under cold stress, not ordinary housing",
+    "Central GIPR is a plausible contributor to triple-agonist appetite effects",
+    "Triple-receptor rationale should not be converted into untested neuroprotection claims",
+    "Removing hepatic GCGR improved glucose but drove alpha-cell hyperplasia",
+    "Chronic GCGR directionally controlled amino acids and alpha-cell mass",
+    "The GLP-1 arm is expected to slow gastric emptying through vagal GLP-1R",
+    "The GIP arm can protect an injured intestinal barrier",
+    "Retatrutide sharply lowered liver triglyceride, but histology did not always follow",
+    "Retatrutide did not change bone mineral density in an obese-hamster experiment",
+    "Brown-fat GCGR was not required for glucagon's whole-body energy effect"
+  ])
+};
+
+Object.values(organEvidence).forEach(organs => {
+  Object.values(organs).forEach(organ => {
+    organ.studies.forEach(study => {
+      study.tone = signalAudit.caution.has(study.title)
+        ? "caution"
+        : signalAudit.mixed.has(study.title)
+          ? "mixed"
+          : "benefit";
+    });
+  });
 });
 
 const evidenceSection = document.querySelector("#evidence");
