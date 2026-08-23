@@ -4,6 +4,8 @@ Signal & Scale is a source-first evidence atlas for semaglutide, tirzepatide, an
 
 Each medication includes a concise preclinical benefit/caution snapshot and nine organ-system tabs. The organ cards identify the receptor, animal or tissue model, intervention, result, proposed mechanism, and the limits of interpretation. Drug exposure, whole-body receptor knockout, and tissue-specific knockout evidence are kept distinct.
 
+Organ-card colors describe the direction of the finding for receptor activation or drug exposure: green is favorable, red is adverse/cautionary, and yellow is mixed, neutral, indirect, or context-dependent. A harmful knockout phenotype therefore supports a favorable activation signal unless the study shows otherwise.
+
 Live site: https://dev1niscool.github.io/glp1-evidence-atlas/
 
 ## Research approach
