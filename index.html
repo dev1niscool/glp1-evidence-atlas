@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple, source-first guide to semaglutide, tirzepatide, and retatrutide research.">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta property="og:title" content="Signal &amp; Scale — The GLP-1 Evidence Atlas">
+  <meta property="og:description" content="Preclinical summaries and the research behind semaglutide, tirzepatide, and retatrutide.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev1niscool.github.io/glp1-evidence-atlas/">
+  <meta property="og:image" content="https://dev1niscool.github.io/glp1-evidence-atlas/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Signal &amp; Scale — The GLP-1 Evidence Atlas</title>
+  <link rel="canonical" href="https://dev1niscool.github.io/glp1-evidence-atlas/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#choose" aria-label="Signal and Scale home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Signal &amp; Scale</span>
+    </a>
+    <span class="update-stamp">Research checked · Aug 2026</span>
+  </header>
+
+  <main id="main">
+    <section class="chooser" id="choose">
+      <div class="landing-copy">
+        <p class="eyebrow">GLP-1 evidence guide</p>
+        <h1>Choose a medication</h1>
+        <p>See a short preclinical summary, then read the studies and sources.</p>
+      </div>
+
+      <div class="path-list">
+        <button class="path-card sema" type="button" data-drug="semaglutide" aria-controls="evidence">
+          <span class="medicine-number">01</span>
+          <span class="medicine-name"><strong>Semaglutide</strong><small>GLP-1 agonist</small></span>
+          <span class="status">FDA approved</span>
+          <span class="card-action" aria-hidden="true">→</span>
+        </button>
+        <button class="path-card tirz" type="button" data-drug="tirzepatide" aria-controls="evidence">
+          <span class="medicine-number">02</span>
+          <span class="medicine-name"><strong>Tirzepatide</strong><small>GLP-1 + GIP agonist</small></span>
+          <span class="status">FDA approved</span>
+          <span class="card-action" aria-hidden="true">→</span>
+        </button>
+        <button class="path-card reta" type="button" data-drug="retatrutide" aria-controls="evidence">
+          <span class="medicine-number">03</span>
+          <span class="medicine-name"><strong>Retatrutide</strong><small>GLP-1 + GIP + glucagon agonist</small></span>
+          <span class="status">Investigational</span>
+          <span class="card-action" aria-hidden="true">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="evidence" id="evidence" hidden aria-live="polite">
+      <div class="evidence-shell">
+        <div class="evidence-topline">
+          <button class="back-button" type="button" data-back>← Choose another</button>
+          <div class="medicine-switcher" aria-label="Switch medication">
+            <button type="button" data-drug="semaglutide">Semaglutide</button>
+            <button type="button" data-drug="tirzepatide">Tirzepatide</button>
+            <button type="button" data-drug="retatrutide">Retatrutide</button>
+          </div>
+        </div>
+
+        <header class="evidence-header">
+          <div>
+            <p class="eyebrow" id="evidence-kicker"></p>
+            <h2 id="evidence-title"></h2>
+            <p class="evidence-deck" id="evidence-deck"></p>
+          </div>
+          <div class="identity-card" id="identity-card"></div>
+        </header>
+
+        <section class="preclinical-snapshot" aria-labelledby="snapshot-title">
+          <div class="snapshot-heading">
+            <p class="eyebrow">Preclinical snapshot</p>
+            <h3 id="snapshot-title">What the animal and receptor studies suggest</h3>
+          </div>
+          <div class="snapshot-columns" id="preclinical-snapshot"></div>
+        </section>
+
+        <section class="organ-atlas" aria-labelledby="organ-title">
+          <div class="section-label">
+            <p class="eyebrow">Organ-system atlas</p>
+            <h3 id="organ-title">How the receptors behave</h3>
+            <p>Agonists, whole-body knockouts, and tissue-specific knockouts are kept separate.</p>
+          </div>
+          <div class="organ-tabs" id="organ-tabs" role="tablist" aria-label="Organ systems"></div>
+          <div class="organ-panel" id="organ-panel"></div>
+        </section>
+
+        <section class="research-detail" aria-labelledby="research-title">
+          <div class="research-heading">
+            <p class="eyebrow">Study details</p>
+            <h3 id="research-title">The research</h3>
+          </div>
+          <nav class="evidence-filters" aria-label="Evidence categories">
+            <button type="button" class="active" data-filter="human">Human studies</button>
+            <button type="button" data-filter="preclinical">Preclinical studies</button>
+            <button type="button" data-filter="safety">Side effects &amp; limits</button>
+            <button type="button" data-filter="sources">Sources</button>
+          </nav>
+          <div class="filter-summary" id="filter-summary"></div>
+          <div class="evidence-grid" id="evidence-grid"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>Made by Devin Kancherla</footer>
+</body>
+</html>
